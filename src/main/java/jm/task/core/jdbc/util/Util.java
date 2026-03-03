@@ -16,7 +16,6 @@ public class Util {
 
     public static Connection getMySQLConnection(String hostName, String dbName, String userName, String password) throws SQLException {
         String connectionURL = "jdbc:mysql://" + hostName + ":3306/" + dbName;
-        Connection conn = DriverManager.getConnection(connectionURL, userName, password);
-        return conn;
+        return DriverManager.getConnection(connectionURL, userName, password);
     }
 }
