@@ -16,12 +16,17 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Statement statement = Util.getInstance().getConnection().createStatement()) {
             statement.execute(createTableSQL);
         } catch (SQLException e) {
-            System.err.println("Ошибка инициализации БД: " + e.getMessage());
+            System.err.println("При создании таблицы произошла ошибка: " + e.getMessage());
         }
     }
 
     public void dropUsersTable() {
-
+        String dropTableSQL = "DROP TABLE users";
+        try (Statement statement = Util.getInstance().getConnection().createStatement()) {
+            statement.execute(dropTableSQL);
+        } catch (SQLException e) {
+            System.err.println("При удалении таблицы произошла ошибка: " + e.getMessage());
+        }
     }
 
     public void saveUser(String name, String lastName, byte age) {

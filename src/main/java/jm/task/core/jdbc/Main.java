@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         UserDaoJDBCImpl userDaoJDBC = new UserDaoJDBCImpl();
         System.out.println("Пытаемся создать таблицу");
-        userDaoJDBC.createUsersTable();
-        System.out.println("Метод createUsersTable выполнен");
+        userDaoJDBC.dropUsersTable();
+        System.out.println("Метод выполнен");
     }
 }
