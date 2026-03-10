@@ -17,6 +17,7 @@ public class UserDaoJDBCImpl implements UserDao {
         String createTableSQL = "CREATE TABLE IF NOT EXISTS users(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100) NOT NULL, last_name VARCHAR(100) NOT NULL, age INT)";
         try (Statement statement = Util.getInstance().getConnection().createStatement()) {
             statement.execute(createTableSQL);
+            System.out.println("Таблица успешно создана");
         } catch (SQLException e) {
             System.err.println("При создании таблицы произошла ошибка: " + e.getMessage());
         }
@@ -26,6 +27,7 @@ public class UserDaoJDBCImpl implements UserDao {
         String dropTableSQL = "DROP TABLE IF EXISTS users";
         try (Statement statement = Util.getInstance().getConnection().createStatement()) {
             statement.execute(dropTableSQL);
+            System.out.println("Таблица успешно удалена");
         } catch (SQLException e) {
             System.err.println("При удалении таблицы произошла ошибка: " + e.getMessage());
         }
@@ -35,6 +37,7 @@ public class UserDaoJDBCImpl implements UserDao {
         String saveSQL = "INSERT users(name, last_name, age) VALUES ('" + name + "', '" + lastName + "', " + age + ")";
         try (Statement statement = Util.getInstance().getConnection().createStatement()) {
             statement.execute(saveSQL);
+            System.out.println("User с именем - " + name + " добавлен в базу данных");
         } catch (SQLException e) {
             System.err.println("При добавлении пользователя произошла ошибка: " + e.getMessage());
         }
@@ -44,6 +47,7 @@ public class UserDaoJDBCImpl implements UserDao {
         String removeByIdSQL = "DELETE FROM users WHERE id='" + id + "'";
         try (Statement statement = Util.getInstance().getConnection().createStatement()) {
             statement.execute(removeByIdSQL);
+            System.out.println("User c " + id + " успешно удален");
         } catch (SQLException e) {
             System.err.println("При удалении пользователя по id произошла ошибка: " + e.getMessage());
         }
@@ -61,6 +65,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 user.setLastName(resultSet.getString("last_name"));
                 user.setAge(resultSet.getByte("age"));
                 users.add(user);
+                System.out.println(user);
             }
         } catch (SQLException e) {
             System.err.println("При получении всех пользователей произошла ошибка: ");
@@ -73,6 +78,7 @@ public class UserDaoJDBCImpl implements UserDao {
         String cleanTable = "TRUNCATE TABLE users";
         try (Statement statement = Util.getInstance().getConnection().createStatement()) {
             statement.executeUpdate(cleanTable);
+            System.out.println("Таблица успешно очищена");
         } catch (SQLException e) {
             System.err.println("При попытке удалить всех пользователей произошла ошибка: " + e.getMessage());
         }
