@@ -8,11 +8,12 @@ import java.sql.Statement;
 
 public class Main {
     public static void main(String[] args) {
-        try (Connection connection = Util.getMySQLConnection(); Statement statement = connection.createStatement()) {
+        try (Connection connection = Util.getInstance().getConnection(); Statement statement = connection.createStatement()) {
             if (!connection.isClosed()) {
                 System.out.println("Соединение с БД установлено!");
             }
-        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Соединение с БД закрыто!");
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
