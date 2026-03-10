@@ -1,5 +1,6 @@
 package jm.task.core.jdbc;
 
+import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.util.Util;
 
 import java.sql.Connection;
@@ -8,13 +9,9 @@ import java.sql.Statement;
 
 public class Main {
     public static void main(String[] args) {
-        try (Connection connection = Util.getInstance().getConnection(); Statement statement = connection.createStatement()) {
-            if (!connection.isClosed()) {
-                System.out.println("Соединение с БД установлено!");
-            }
-            System.out.println("Соединение с БД закрыто!");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        UserDaoJDBCImpl userDaoJDBC = new UserDaoJDBCImpl();
+        System.out.println("Пытаемся создать таблицу");
+        userDaoJDBC.createUsersTable();
+        System.out.println("Метод createUsersTable выполнен");
     }
 }
