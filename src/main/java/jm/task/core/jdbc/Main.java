@@ -13,8 +13,11 @@ public class Main {
         System.out.println("Пытаемся создать таблицу");
         userDaoJDBC.createUsersTable();
         System.out.println("Таблица создана");
-        System.out.println("Пытаемся выполнить метод");
-        userDaoJDBC.saveUser("vladimir", "Kalinin", (byte) 25);
-        System.out.println("Метод выполнен");
+//        System.out.println("Пытаемся добавить пользователя");
+//        userDaoJDBC.saveUser("vladimir", "Kalinin", (byte) 25);
+//        System.out.println("Пользователь добавлен");
+        System.out.println("Пытаемся удалить пользователя");
+        userDaoJDBC.removeUserById(1);
+        System.out.println("Пользователь удален");
     }
 }
