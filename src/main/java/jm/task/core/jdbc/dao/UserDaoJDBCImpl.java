@@ -47,7 +47,7 @@ public class UserDaoJDBCImpl implements UserDao {
         String removeByIdSQL = "DELETE FROM users WHERE id='" + id + "'";
         try (Statement statement = Util.getInstance().getConnection().createStatement()) {
             statement.execute(removeByIdSQL);
-            System.out.println("User c " + id + " успешно удален");
+            System.out.println("User c id " + id + " успешно удален");
         } catch (SQLException e) {
             System.err.println("При удалении пользователя по id произошла ошибка: " + e.getMessage());
         }
