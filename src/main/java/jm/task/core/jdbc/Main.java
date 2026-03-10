@@ -26,5 +26,8 @@ public class Main {
 //        System.out.println("Пытаемся удалить пользователя");
 //        userDaoJDBC.removeUserById(1);
 //        System.out.println("Пользователь удален");
+        System.out.println("Пытаемся удалить всех пользователей");
+        userDaoJDBC.cleanUsersTable();
+        System.out.println("Все пользователи удалены");
     }
 }
