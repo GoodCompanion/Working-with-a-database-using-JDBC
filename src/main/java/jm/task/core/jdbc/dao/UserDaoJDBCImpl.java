@@ -23,7 +23,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void dropUsersTable() {
-        String dropTableSQL = "DROP TABLE users";
+        String dropTableSQL = "DROP TABLE IF EXISTS users";
         try (Statement statement = Util.getInstance().getConnection().createStatement()) {
             statement.execute(dropTableSQL);
         } catch (SQLException e) {
@@ -72,7 +72,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void cleanUsersTable() {
         String cleanTable = "TRUNCATE TABLE users";
         try (Statement statement = Util.getInstance().getConnection().createStatement()) {
-            statement.execute(cleanTable);
+            statement.executeUpdate(cleanTable);
         } catch (SQLException e) {
             System.err.println("При попытке удалить всех пользователей произошла ошибка: " + e.getMessage());
         }
