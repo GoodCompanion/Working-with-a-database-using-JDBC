@@ -11,7 +11,10 @@ public class Main {
     public static void main(String[] args) {
         UserDaoJDBCImpl userDaoJDBC = new UserDaoJDBCImpl();
         System.out.println("Пытаемся создать таблицу");
-        userDaoJDBC.dropUsersTable();
+        userDaoJDBC.createUsersTable();
+        System.out.println("Таблица создана");
+        System.out.println("Пытаемся выполнить метод");
+        userDaoJDBC.saveUser("vladimir", "Kalinin", (byte) 25);
         System.out.println("Метод выполнен");
     }
 }
